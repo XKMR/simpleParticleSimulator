@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="style.css"><title>hi</title></head><body>
-
-
-<canvas id="myCanvas" width="100" height="100">
-Sorry, your browser does not support canvas.
-</canvas>
-
-<script src="index.js"></script>
-
-
-</body></html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="style.css">
+		<title>hi</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="100" height="100"> Sorry, your browser does not support canvas. </canvas>
+		<br />
+        <div class="float-container">
+            <div class="float-child"> Canvas Dimentions: <input id="canvasX" value="500"> by <input id="canvasY" value="500">
+                <br /> Particle Count: <input id="particleCount" value="200">
+                <br /> Particle Influence: <input id="particleInfluence" value="1">
+                <br /> Energy Loss: <input id="energyLoss" value="0.1">%
+            </div>
+            <div class="float-child">
+                TimeStep: <input id="timeStep" value="0.01">
+                <br /> Animation Speed: <input id="animationSpeed" value="1">
+                <br /> Force Limit: <input id="forceLimit" value="10000">  yes?<input id="limitForce" type="checkbox" checked="true">
+                <br /> bounce? <input id="bounce" type="checkbox" checked="true">
+            </div>
+        </div>
+        <br /><br /><br /><br /><br /><button onclick="reload()">SAVE SETTINGS AND RELOAD</button>
+		<script src="index.js"></script>
+	</body>
+</html>
