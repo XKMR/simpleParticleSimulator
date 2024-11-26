@@ -1,5 +1,68 @@
-const canvasDimentions = [500, 500];
-const particleCount = 200;
+var canvasDimentions = [500, 500];
+var particleCount = 200;
+var particleInfluence = 1;
+var particleMass = 1.0;
+var energyLoss = 0.1
+var timeStep = 0.01;
+var limitForce = true
+var forceLimit = 10000
+var bounce = true
+var animationSpeed = 1
+
+var reloaded
+if(localStorage.getItem("reloaded") == "true"){
+	reloaded = true
+}else{
+	reloaded = false
+}
+
+if(reloaded){
+	canvasDimentions = [parseInt(localStorage.getItem("canvasX")), parseInt(localStorage.getItem("canvasY"))];
+	particleCount = parseInt(localStorage.getItem("particleCount"));
+	particleInfluence = parseFloat(localStorage.getItem("particleInfluence"));
+	energyLoss = parseFloat(localStorage.getItem("energyLoss"))
+	timeStep = parseFloat(localStorage.getItem("timeStep"));
+	limitForce = (localStorage.getItem("limitForce")=="true")
+	forceLimit = parseFloat(localStorage.getItem("forceLimit"))
+	bounce = (localStorage.getItem("bounce")=="true")
+	animationSpeed = parseFloat(localStorage.getItem("animationSpeed"))
+
+	document.getElementById("canvasX").value = canvasDimentions[0]
+	document.getElementById("canvasY").value = canvasDimentions[1]
+	document.getElementById("particleCount").value = particleCount
+	document.getElementById("particleInfluence").value = particleInfluence
+	document.getElementById("energyLoss").value = energyLoss
+	document.getElementById("timeStep").value = timeStep
+	document.getElementById("limitForce").checked = limitForce
+	document.getElementById("animationSpeed").value = animationSpeed
+	document.getElementById("forceLimit").value = forceLimit
+	document.getElementById("bounce").checked = bounce
+
+}
+
+console.log(bounce)
+
+function reload(){
+	localStorage.setItem("reloaded", "true");
+	localStorage.setItem("canvasX", document.getElementById("canvasX").value);
+	localStorage.setItem("canvasY", document.getElementById("canvasY").value);
+	localStorage.setItem("particleCount", document.getElementById("particleCount").value);
+	localStorage.setItem("particleInfluence", document.getElementById("particleInfluence").value);
+	localStorage.setItem("energyLoss", document.getElementById("energyLoss").value);
+	localStorage.setItem("timeStep", document.getElementById("timeStep").value);
+	localStorage.setItem("bounce", document.getElementById("bounce").checked);
+	localStorage.setItem("limitForce", document.getElementById("limitForce").checked);
+	localStorage.setItem("forceLimit", document.getElementById("forceLimit").value);
+	localStorage.setItem("animationSpeed", document.getElementById("animationSpeed").value);
+	window.location.reload();
+
+}
+
+function reset(){
+	localStorage.clear();
+	window.location.reload();
+}
+
 var particlePositions = []
 var particleSpeeds = []
 var particleAccelerations = []
@@ -15,14 +78,7 @@ for(i=0; i < particleCount; i+=1){
 }
 
 
-const particleInfluence = 1;
-const particleMass = 1.0;
-const energyLoss = 0
-const timeStep = 0.01;
-const limitForce = true
-const forceLimit = 10000
-const bounce = true
-const animationSpeed = 1
+
 
 const htmlCanvas = document.getElementById("myCanvas");
 const ctx = htmlCanvas.getContext("2d");
@@ -122,7 +178,7 @@ for(i=0; i < particleCount; i+=1){
 }
 
 var newPositions = particlePositions;
-//var color = true;
+var color = true;
 function loop() {
 
 	for(i=0; i < particleCount; i+=1){
@@ -131,8 +187,8 @@ function loop() {
 	particlePositions = newPositions;
 	//console.log(renderFrame());
 	htmlDraw();
-	//document.getElementById("myCanvas").style.borderColor=color?"grey":"black";
-	//color = !color
+	document.getElementById("myCanvas").style.borderColor=color?"grey":"black";
+	color = !color
 }
 
 const colorMap = ["red", "blue", "green", "yellow", "purple", "black"].sort((a, b) => 0.5 - Math.random());
