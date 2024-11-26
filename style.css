@@ -4,3 +4,15 @@ body{
 canvas{
     border:1px solid black;
 }
+input{
+    width: 40px
+}
+.float-container {
+    width: 600px;
+    border:1px solid black;
+  }
+  
+  .float-child {
+    width: 50%;
+    float: left;
+  }
