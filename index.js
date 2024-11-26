@@ -1,5 +1,5 @@
-const canvasDimentions = [2500, 1000];
-const particleCount = 1000;
+const canvasDimentions = [500, 500];
+const particleCount = 200;
 var particlePositions = []
 var particleSpeeds = []
 var particleAccelerations = []
