@@ -122,7 +122,7 @@ for(i=0; i < particleCount; i+=1){
 }
 
 var newPositions = particlePositions;
-var color = true;
+//var color = true;
 function loop() {
 
 	for(i=0; i < particleCount; i+=1){
@@ -131,8 +131,8 @@ function loop() {
 	particlePositions = newPositions;
 	//console.log(renderFrame());
 	htmlDraw();
-	document.getElementById("myCanvas").style.borderColor=color?"grey":"black";
-	color = !color
+	//document.getElementById("myCanvas").style.borderColor=color?"grey":"black";
+	//color = !color
 }
 
 const colorMap = ["red", "blue", "green", "yellow", "purple", "black"].sort((a, b) => 0.5 - Math.random());
